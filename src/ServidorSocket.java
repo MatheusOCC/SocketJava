@@ -14,7 +14,8 @@ public class ServidorSocket {
 			System.out.println("Inicialização concluída");
 		
 			while(true) {
-				Socket socket = servidor.accept();
+				Socket cliente = servidor.accept();
+				new GerenciadorClientes(cliente);
 			}
 			
 		}catch (IOException e) {
