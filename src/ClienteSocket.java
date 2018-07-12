@@ -2,15 +2,19 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.rmi.UnknownHostException;
 
 public class ClienteSocket {
 
+	private static final String IP = "127.0.0.1";
+	private static final int port = 9999;
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try{
-			final Socket cliente = new Socket ("127.0.0.1", 9999);
+			final Socket cliente = new Socket (IP, port);		
 			
 			//lendo mensagem do servidor
 			new Thread() {
