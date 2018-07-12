@@ -10,11 +10,15 @@ public class GerenciadorClientes extends Thread{
 	private String nomeCliente;
 	
 	public GerenciadorClientes(Socket cliente) {
+		
 		// TODO Auto-generated constructor stub
 		this.cliente = cliente;
 		start();
+		
 	}
+	
 	public void run() {
+		
 		try {
 			
 			BufferedReader leitor = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
@@ -22,6 +26,7 @@ public class GerenciadorClientes extends Thread{
 			escritor.println("Qual o seu nome?");
 			String mensagem = leitor.readLine();
 			this.nomeCliente = mensagem;
+			escritor.println("Olá, " + nomeCliente);
 			
 			while(true) {
 				mensagem = leitor.readLine();
@@ -29,8 +34,10 @@ public class GerenciadorClientes extends Thread{
 			}
 			
 		}catch(IOException e) {
+			
 			System.err.println("Conexão encerrada");
 			e.printStackTrace();
+			
 		}
 	}
 }

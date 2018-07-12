@@ -11,6 +11,8 @@ public class ClienteSocket {
 		// TODO Auto-generated method stub
 		try{
 			final Socket cliente = new Socket ("127.0.0.1", 9999);
+			
+			//lendo mensagem do servidor
 			new Thread() {
 				@Override
 				public void run() {
@@ -27,7 +29,8 @@ public class ClienteSocket {
 				}
 			}.start();
 			
-			PrintWriter escritor = new PrintWriter(cliente.getOutputStream());
+			//escrevendo mensagem para o servidor			
+			PrintWriter escritor = new PrintWriter(cliente.getOutputStream(),true);
 			BufferedReader leitorTerminal  = new BufferedReader(new InputStreamReader(System.in));
 			while(true) {
 				String mensagemTerminal = leitorTerminal.readLine();
